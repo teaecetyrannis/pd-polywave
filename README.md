@@ -11,5 +11,5 @@ En el subparche `[pd help]` dentro de polywave~.pd se encuentra toda la informac
 
 
 ## créditos
-[Pure Data](https://github.com/pure-data/pure-data) por Miller Puckette y muchxs más.
-[Continuous Order Polygonal Waveform Synthesis](https://quod.lib.umich.edu/cgi/p/pod/dod-idx/continuous-order-polygonalwaveform-synthesis.pdf?c=icmc;idno=bbp2372.2016.104;format=pdf) por Christoph Hohnerlein y Maximilian Rest.
+- [Pure Data](https://github.com/pure-data/pure-data) por Miller Puckette y muchxs más.
+- [Continuous Order Polygonal Waveform Synthesis](https://quod.lib.umich.edu/cgi/p/pod/dod-idx/continuous-order-polygonalwaveform-synthesis.pdf?c=icmc;idno=bbp2372.2016.104;format=pdf) por Christoph Hohnerlein y Maximilian Rest.
