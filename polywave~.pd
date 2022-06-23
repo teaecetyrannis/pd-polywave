@@ -1,0 +1,675 @@
+#N canvas -8 -8 1366 685 12;
+#X obj 408 384 outlet~;
+#N canvas -8 -8 1366 685 midi-input 0;
+#X obj 93 400 outlet;
+#X obj 93 169 - 1;
+#X obj 93 228 pack 0 0 0;
+#X obj 93 140 poly 16 1, f 10;
+#X obj 12 12 inlet;
+#X obj 177 12 inlet;
+#X obj 12 81 unpack;
+#X obj 192 208 spigot;
+#X obj 177 332 list prepend;
+#X obj 177 361 list trim;
+#X msg 359 303 all;
+#X obj 359 216 sel 0 1, f 10;
+#X msg 177 303 bend \$1;
+#X msg 428 361 label \$1;
+#X obj 428 337 symbol;
+#X obj 12 140 poly 1 1, f 10;
+#X obj 12 169 - 1;
+#X obj 12 228 pack 0 0 0;
+#X obj 93 361 spigot;
+#X obj 132 346 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 12 361 spigot;
+#X obj 51 346 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 258 303 spigot;
+#X msg 297 284 1;
+#X msg 322 284 0;
+#X obj 359 245 t b b;
+#N canvas -8 -8 1366 685 polystuff 0;
+#X obj 12 99 sel 0 1, f 9;
+#X obj 12 69 t f b;
+#X msg 96 99 0;
+#X obj 12 148 outlet;
+#X obj 96 148 outlet;
+#X msg 89 40 0;
+#X obj 12 40 change;
+#X obj 12 11 r \$0-poly;
+#X obj 89 11 loadbang;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 1 0 0 0;
+#X connect 1 1 2 0;
+#X connect 2 0 4 0;
+#X connect 2 0 3 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;
+#X connect 7 0 6 0;
+#X connect 8 0 5 0;
+#X restore 51 317 pd polystuff;
+#X msg 95 82 0;
+#X msg 468 192 0;
+#X obj 359 187 change;
+#X msg 428 284 bend:_global;
+#X msg 438 308 bend:_last;
+#X obj 468 168 loadbang;
+#X obj 95 58 loadbang;
+#X obj 177 130 expr (($f1/16383)-0.5)*$f2;
+#X obj 356 77 r \$0-bendRange;
+#X obj 356 106 * 2;
+#X text 239 210 filter noteoffs;
+#X obj 359 158 r \$0-bendMode;
+#X obj 428 385 s \$0-bendMode-r;
+#X connect 1 0 2 0;
+#X connect 1 0 7 0;
+#X connect 2 0 18 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 1;
+#X connect 3 2 2 2;
+#X connect 3 2 7 1;
+#X connect 4 0 6 0;
+#X connect 5 0 34 0;
+#X connect 6 0 3 0;
+#X connect 6 0 15 0;
+#X connect 6 1 3 1;
+#X connect 6 1 15 1;
+#X connect 7 0 22 0;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 10 0 8 1;
+#X connect 11 0 25 0;
+#X connect 11 1 31 0;
+#X connect 11 1 23 0;
+#X connect 12 0 8 0;
+#X connect 13 0 39 0;
+#X connect 14 0 13 0;
+#X connect 15 0 16 0;
+#X connect 15 1 17 1;
+#X connect 15 2 17 2;
+#X connect 16 0 17 0;
+#X connect 17 0 20 0;
+#X connect 18 0 0 0;
+#X connect 19 0 18 1;
+#X connect 20 0 0 0;
+#X connect 21 0 20 1;
+#X connect 22 0 8 1;
+#X connect 23 0 22 1;
+#X connect 24 0 22 1;
+#X connect 25 0 10 0;
+#X connect 25 0 30 0;
+#X connect 25 1 24 0;
+#X connect 26 0 21 0;
+#X connect 26 1 19 0;
+#X connect 27 0 3 1;
+#X connect 28 0 11 0;
+#X connect 29 0 11 0;
+#X connect 30 0 14 0;
+#X connect 31 0 14 0;
+#X connect 32 0 28 0;
+#X connect 33 0 27 0;
+#X connect 34 0 12 0;
+#X connect 35 0 36 0;
+#X connect 36 0 34 1;
+#X connect 38 0 29 0;
+#X restore 408 247 pd midi-input;
+#X obj 408 188 inlet;
+#X obj 408 218 route bend;
+#X obj 101 154 cnv 15 215 199 empty empty empty 20 12 0 14 #fcfcfc
+#404040 0;
+#X obj 251 273 nbx 4 15 0 1e+37 0 0 \$0-att \$0-att-r ms 50 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 251 293 nbx 4 15 0 1e+37 0 0 \$0-dec \$0-dec-r ms 50 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 251 313 nbx 4 15 0 1e+37 0 0 \$0-sus \$0-sus-r % 50 8 0 10 #fc80c0
+#fcfcfc #8080fc 0 256;
+#X obj 251 333 nbx 4 15 0 1e+37 0 0 \$0-rel \$0-rel-r ms 50 8 0 10
+#fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 230 273 cnv 15 15 15 empty \$0-text att 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 230 293 cnv 15 15 15 empty \$0-text dec 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 230 313 cnv 15 15 15 empty \$0-text sus 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 230 333 cnv 15 15 15 empty \$0-text rel 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 156 192 nbx 4 15 0 99 0 0 \$0-teeth \$0-teeth-r teeth 0 -8 0
+10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 106 192 nbx 4 15 2.01 99 0 0 \$0-order \$0-order-r order 0 -8
+0 10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 216 192 nbx 4 15 0 1e+37 0 0 \$0-pm-g \$0-pm-g-r amount 0 -8
+0 10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 266 192 nbx 4 15 0 1e+37 0 0 \$0-pm-f \$0-pm-f-r freq 0 -8 0
+10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 256 159 cnv 15 15 15 empty \$0-text pm: 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 131 159 cnv 15 15 15 empty \$0-text polygon: 0 6 0 10 #fcfcfc
+#8080fc 0;
+#X obj 257 253 cnv 15 15 15 empty \$0-text adsr: 0 6 0 10 #fcfcfc #8080fc
+0;
+#X obj 106 288 tgl 10 0 \$0-legato \$0-legato-r legato 15 4 0 10 #fc80c0
+#fcfcfc #8080fc 0 1;
+#X obj 106 273 hradio 10 1 0 2 \$0-bendMode \$0-bendMode-r bend:_global
+25 4 0 10 #fc80c0 #fcfcfc #8080fc 0;
+#X obj 106 303 hradio 10 1 0 2 \$0-poly \$0-poly-r mono 25 4 0 10 #fc80c0
+#fcfcfc #8080fc 0;
+#X obj 134 253 cnv 15 15 15 empty \$0-text voices: 0 6 0 10 #fcfcfc
+#8080fc 0;
+#X obj 162 313 cnv 15 10 10 empty empty . -18 -100 2 385 #fcfcfc #fc80c0
+0;
+#N canvas -8 -8 1366 685 adsr 1;
+#X obj 516 456 outlet;
+#X obj 516 384 list prepend adsr;
+#X obj 386 247 r \$0-att;
+#X msg 386 271 att \$1;
+#X obj 451 247 r \$0-dec;
+#X msg 451 271 dec \$1;
+#X obj 516 247 r \$0-sus;
+#X obj 516 271 * 0.01;
+#X msg 516 295 sus \$1;
+#X msg 581 271 rel \$1;
+#X obj 581 247 r \$0-rel;
+#X obj 646 247 r \$0-legato;
+#X msg 646 271 legato \$1;
+#X obj 516 432 list trim;
+#X obj 516 408 list prepend all;
+#X msg 732 271 anticlick \$1;
+#X obj 732 247 r \$0-anticlick;
+#X connect 1 0 14 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 0;
+#X connect 9 0 1 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 12 0 1 0;
+#X connect 13 0 0 0;
+#X connect 14 0 13 0;
+#X connect 15 0 1 0;
+#X connect 16 0 15 0;
+#X restore 524 286 pd adsr;
+#X obj 111 247 cnv 2 195 1 empty \$0-bar empty 20 12 0 14 #8080fc #444444
+0;
+#X obj 208 166 cnv 2 1 69 empty \$0-bar empty 20 12 0 14 #8080fc #444444
+0;
+#X obj 180 316 cnv 1 2 2 empty \$0-drawingPen-r . -7 -16 2 60 #fc80c0
+#8080fc 0;
+#X obj 156 225 nbx 4 15 0 1e+37 0 0 \$0-lerp \$0-lerp-r lerp 0 -8 0
+10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 587 384 outlet~;
+#N canvas -8 -8 1366 685 voices 0;
+#X obj 223 112 symbol;
+#X msg 223 141 label \$1;
+#X msg 26 112 1;
+#X msg 58 112 0;
+#X obj 26 54 t b b;
+#X obj 26 83 delay 10;
+#X obj 26 15 r \$0-poly;
+#X obj 223 170 s \$0-poly-r;
+#X msg 223 83 mono;
+#X msg 263 83 poly;
+#X obj 223 54 sel 0, f 12;
+#X obj 26 233 outlet;
+#X obj 26 151 list prepend switch;
+#X text 299 115 cambiar label del objeto de control de polifonía;
+#X text 25 267 envía un mensaje noteoff a todas las voces;
+#X obj 26 204 list trim;
+#X obj 26 180 list prepend all;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 12 0;
+#X connect 3 0 12 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 2 0;
+#X connect 6 0 10 0;
+#X connect 6 0 4 0;
+#X connect 8 0 0 0;
+#X connect 9 0 0 0;
+#X connect 10 0 8 0;
+#X connect 10 1 9 0;
+#X connect 12 0 16 0;
+#X connect 15 0 11 0;
+#X connect 16 0 15 0;
+#X restore 587 286 pd voices;
+#X f 11;
+#X obj 23 543 r \$0-error;
+#X obj 23 567 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 106 225 nbx 4 15 0 99 0 0 \$0-round \$0-round-r round 0 -8 0
+10 #fc80c0 #fcfcfc #8080fc 0 256;
+#X obj 646 154 inlet;
+#N canvas 319 0 681 676 route-inlet-messages 0;
+#X obj 12 12 inlet;
+#N canvas 676 0 681 676 state 0;
+#X obj 66 30 inlet;
+#N canvas 657 93 669 300 global 0;
+#X obj 54 60 f;
+#X obj 54 7 inlet;
+#X obj 54 238 outlet;
+#X obj 72 36 r \$0-poly;
+#X obj 98 65 r \$0-legato;
+#X obj 233 65 r \$0-out;
+#X obj 143 94 r \$0-bendMode;
+#X obj 188 123 r \$0-bendRange;
+#X msg 54 181 add2 poly \$1 \, addcomma \, add2 legato \$2 \, addcomma
+\, add2 bendMode \$3 \, addcomma \, add2 bendRange \$4 \, addcomma
+\, add2 out \$5;
+#X obj 54 152 pack f f f f f, f 26;
+#X connect 0 0 9 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 9 1;
+#X connect 5 0 9 4;
+#X connect 6 0 9 2;
+#X connect 7 0 9 3;
+#X connect 8 0 2 0;
+#X connect 9 0 8 0;
+#X restore 66 175 pd global;
+#X obj 66 59 t b b;
+#X msg 98 88 set;
+#X obj 66 204 s \$0-state;
+#N canvas 711 277 669 300 adsr 0;
+#X obj 54 60 f;
+#X obj 54 7 inlet;
+#X obj 54 224 outlet;
+#X msg 54 181 add2 adsr att \$1 \, addcomma \, add2 adsr dec \$2 \,
+addcomma \, add2 adsr sus \$3 \, addcomma \, add2 adsr rel \$4 \, addcomma
+\,;
+#X obj 54 152 pack f f f f, f 16;
+#X obj 72 36 r \$0-att;
+#X obj 90 65 r \$0-dec;
+#X obj 126 94 r \$0-sus;
+#X obj 163 123 r \$0-rel;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 0 1;
+#X connect 6 0 4 1;
+#X connect 7 0 4 2;
+#X connect 8 0 4 3;
+#X restore 137 175 pd adsr;
+#N canvas 687 269 669 300 pm 0;
+#X obj 54 60 f;
+#X obj 54 7 inlet;
+#X obj 54 252 outlet;
+#X obj 54 152 pack f f;
+#X msg 54 181 add2 pm amount \$1 \, addcomma \, add2 pm freq \$2 \,
+addcomma;
+#X obj 72 36 r \$0-pm-g;
+#X obj 107 65 r \$0-pm-f;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 0 1;
+#X connect 6 0 3 1;
+#X restore 208 175 pd pm;
+#N canvas 628 281 669 300 poly 0;
+#X obj 54 60 f;
+#X obj 54 7 inlet;
+#X obj 54 252 outlet;
+#X obj 72 34 r \$0-order;
+#X obj 90 65 r \$0-teeth;
+#X obj 126 94 r \$0-lerp;
+#X obj 163 123 r \$0-round;
+#X obj 54 152 pack f f f f, f 16;
+#X msg 54 181 add2 order \$1 \, addcomma \, add2 teeth \$2 \, addcomma
+\, add2 lerp \$3 \, addcomma \, add2 round \$4 \, addcomma;
+#X connect 0 0 7 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 1;
+#X connect 4 0 7 1;
+#X connect 5 0 7 2;
+#X connect 6 0 7 3;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X restore 280 175 pd poly;
+#X obj 66 146 t b b b b, f 31;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 8 0;
+#X connect 2 1 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 1 0;
+#X connect 8 1 5 0;
+#X connect 8 2 6 0;
+#X connect 8 3 7 0;
+#X restore 618 383 pd state;
+#X msg 513 91 0;
+#X obj 543 62 loadbang;
+#X msg 543 91 2;
+#X obj 671 412 s \$0-error;
+#X obj 106 120 s \$0-lerp-r;
+#X obj 153 149 s \$0-round-r;
+#X obj 12 120 s \$0-order-r;
+#X obj 59 149 s \$0-teeth-r;
+#X obj 12 91 route order teeth lerp round pm, f 34;
+#X obj 349 275 s \$0-legato-r;
+#X obj 298 304 s \$0-poly-r;
+#X obj 512 304 s \$0-bendRange;
+#X obj 459 275 s \$0-bendMode-r;
+#X obj 298 246 != 0;
+#X obj 349 246 != 0;
+#X obj 459 246 != 0;
+#X obj 565 246 s \$0-out-r;
+#X msg 603 91 99;
+#X msg 573 91 3;
+#N canvas 52 52 450 300 adsr 0;
+#X obj 49 42 inlet;
+#X obj 49 71 route att dec sus rel, f 23;
+#X obj 49 105 s \$0-att-r;
+#X obj 88 129 s \$0-dec-r;
+#X obj 128 105 s \$0-sus-r;
+#X obj 167 129 s \$0-rel-r;
+#X obj 207 208 s \$0-error;
+#X obj 309 45 loadbang;
+#X msg 309 69 100;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 1 2 4 0;
+#X connect 1 3 5 0;
+#X connect 1 4 6 0;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X restore 247 275 pd adsr;
+#N canvas 782 148 450 300 pm 0;
+#X obj 209 182 s \$0-error;
+#X obj 30 103 s \$0-pm-g-r;
+#X obj 119 103 s \$0-pm-f-r;
+#X obj 30 69 route amount freq, f 26;
+#X obj 30 40 inlet;
+#X obj 306 45 loadbang;
+#X msg 306 69 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 0;
+#X connect 3 2 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 1 0;
+#X restore 200 178 pd pm;
+#X obj 247 217 route adsr poly legato anticlick bendMode bendRange
+out state, f 61;
+#X obj 406 304 s \$0-anticlick;
+#X connect 0 0 10 0;
+#X connect 2 0 15 0;
+#X connect 2 0 16 0;
+#X connect 2 0 17 0;
+#X connect 2 0 18 0;
+#X connect 2 0 6 0;
+#X connect 2 0 9 0;
+#X connect 3 0 4 0;
+#X connect 3 0 2 0;
+#X connect 3 0 19 0;
+#X connect 3 0 20 0;
+#X connect 4 0 13 0;
+#X connect 10 0 8 0;
+#X connect 10 1 9 0;
+#X connect 10 2 6 0;
+#X connect 10 3 7 0;
+#X connect 10 4 22 0;
+#X connect 10 5 23 0;
+#X connect 15 0 12 0;
+#X connect 16 0 11 0;
+#X connect 17 0 14 0;
+#X connect 19 0 7 0;
+#X connect 20 0 8 0;
+#X connect 23 0 21 0;
+#X connect 23 1 15 0;
+#X connect 23 2 16 0;
+#X connect 23 3 24 0;
+#X connect 23 4 17 0;
+#X connect 23 5 13 0;
+#X connect 23 6 18 0;
+#X connect 23 7 1 0;
+#X connect 23 8 5 0;
+#X restore 646 183 pd route-inlet-messages;
+#X obj 679 360 r \$0-state;
+#X obj 679 384 outlet;
+#X msg 23 587 se recibió un mensaje desconocido;
+#X obj 23 616 print polywave~;
+#N canvas -8 -8 1366 685 polygon 0;
+#X obj 34 171 list prepend poly;
+#X obj 34 82 list prepend n;
+#X obj 141 82 list prepend t;
+#X obj 576 58 r \$0-pm-f;
+#X obj 688 68 r \$0-pm-g;
+#X obj 576 82 list prepend f;
+#X obj 688 92 list prepend g;
+#X obj 576 122 list prepend pm;
+#X obj 167 200 list trim;
+#X obj 34 258 outlet;
+#X obj 167 239 outlet;
+#X obj 253 82 list prepend lerp;
+#X obj 253 58 r \$0-lerp;
+#X obj 34 58 r \$0-order;
+#X obj 141 34 r \$0-teeth;
+#X obj 386 82 list prepend lop;
+#X obj 141 58 * 0.01;
+#X obj 386 10 r \$0-round;
+#X obj 386 34 * 2.7;
+#X obj 386 58 expr $f1*($f1*0.3);
+#X obj 34 234 list trim;
+#X obj 34 210 list prepend all;
+#X connect 0 0 8 0;
+#X connect 0 0 21 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 0;
+#X connect 4 0 6 0;
+#X connect 5 0 7 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 8 0 10 0;
+#X connect 11 0 0 0;
+#X connect 12 0 11 0;
+#X connect 13 0 1 0;
+#X connect 14 0 16 0;
+#X connect 15 0 0 0;
+#X connect 16 0 2 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 15 0;
+#X connect 20 0 9 0;
+#X connect 21 0 20 0;
+#X restore 678 286 pd polygon;
+#N canvas -8 -8 1366 685 poldraw 0;
+#X obj 54 50 expr atan(1)*4;
+#X obj 54 21 loadbang;
+#X obj 54 79 s \$0-pi;
+#X obj 592 227 r \$0-pi;
+#X obj 758 256 * 2;
+#X obj 923 237 inlet;
+#X obj 923 266 route poly;
+#X obj 427 295 *;
+#X obj 462 432 expr sin($f1) * ($f2);
+#X obj 283 432 expr cos($f1) * ($f2);
+#X msg 283 567 pos \$1 \$2;
+#X obj 283 538 pack, f 26;
+#X obj 283 461 clip -1 1;
+#X obj 462 461 clip -1 1;
+#X obj 283 596 s \$0-drawingPen-r;
+#X obj 283 485 * 25;
+#X obj 462 485 * 25;
+#X text 466 93 velocidad del dibujo;
+#X obj 427 146 line;
+#X obj 427 170 t f f;
+#X obj 459 202 sel 1;
+#X text 783 48 los efectos de este subparche son sólo gráficos \,
+se encarga de "dibujar" el polígono resultante moviendo un objeto
+canvas;
+#X msg 427 122 0 \, 1 \$1;
+#X obj 283 509 + 193;
+#X msg 427 93 2000;
+#X obj 923 295 route n t, f 48;
+#X obj 427 334 expr cos($f2/$f4) / cos(($f3/$f4) * ((($f1*$f4)/$f3)-floor((($f1*$f4)/$f3))/1)
+- $f2/$f4 + $f5), f 95;
+#X obj 462 509 + 318;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 1 0 24 0;
+#X connect 3 0 4 0;
+#X connect 3 0 26 1;
+#X connect 4 0 7 1;
+#X connect 4 0 26 2;
+#X connect 5 0 6 0;
+#X connect 6 0 25 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 0;
+#X connect 7 0 26 0;
+#X connect 8 0 13 0;
+#X connect 9 0 12 0;
+#X connect 10 0 14 0;
+#X connect 11 0 10 0;
+#X connect 12 0 15 0;
+#X connect 13 0 16 0;
+#X connect 15 0 23 0;
+#X connect 16 0 27 0;
+#X connect 18 0 19 0;
+#X connect 19 0 7 0;
+#X connect 19 1 20 0;
+#X connect 20 0 24 0;
+#X connect 22 0 18 0;
+#X connect 23 0 11 0;
+#X connect 24 0 22 0;
+#X connect 25 0 26 3;
+#X connect 25 1 26 4;
+#X connect 26 0 8 1;
+#X connect 26 0 9 1;
+#X connect 27 0 11 1;
+#X restore 745 315 pd poldraw;
+#N canvas -7 0 1366 685 help 0;
+#X obj 38 150 cnv 15 477 222 empty empty empty 20 12 0 14 #c4c4fc #404040
+0;
+#X obj 38 383 cnv 15 519 235 empty empty empty 20 12 0 14 #c4c4fc #404040
+0;
+#X msg 48 399 poly \$1;
+#X msg 48 441 legato \$1;
+#X msg 48 526 bendMode \$1;
+#X msg 48 560 bendRange \$1;
+#X msg 48 589 out \$1;
+#X text 35 126 INLET 1:;
+#X text 35 23 INLET 0:;
+#X obj 38 47 cnv 15 281 63 empty empty empty 20 12 0 14 #c4c4fc #404040
+0;
+#X msg 48 57 \$1 \$2;
+#X msg 48 81 bend \$1;
+#X obj 624 47 cnv 15 135 39 empty empty empty 20 12 0 14 #c4fcfc #404040
+0;
+#X text 621 23 OUTLET 0:;
+#X obj 634 57 sig~;
+#X obj 624 126 cnv 15 499 105 empty empty empty 20 12 0 14 #c4fcfc
+#404040 0;
+#X msg 634 142 set foo;
+#X text 621 102 OUTLET 1:;
+#X obj 38 629 cnv 15 497 39 empty empty empty 20 12 0 14 #c4c4fc #404040
+0;
+#X msg 48 639 state \$1;
+#X text 95 57 mensaje midi (nota y velocity);
+#X text 109 81 pitch bend (de 0 a 16383);
+#X text 137 519 pitch bend afecta a todas las notas o sólo a la última
+(distinto de cero y 0 respectivamente);
+#X text 695 135 donde foo representa una lista de todos los parámetros
+correctamente formateados para ser enviados de vuelta a la abstracción
+\, en otras palabras \, conectar esta salida a un mensaje y cuando
+la abstracción reciba el mensaje [state(] \, se guardará el estado
+actual de la abstracción (tener en cuenta que el mensaje se vaciará
+antes de escribir en él);
+#X text 115 639 escribir un mensaje con el estado actual de la abstracción
+;
+#X text 143 553 rango del pitch bend (hacia arriba o hacia abajo) en
+semitonos (por defecto 2);
+#X text 109 392 elegir entre modo polifónico de 16 voces o monofónico
+(distinto de cero y 0 respectivamente) (por defecto 0);
+#X msg 48 484 anticlick \$1;
+#X text 123 434 usar o no legato (distinto de cero y 0 respectivamente)
+(por defecto 0);
+#X text 102 589 ganancia de salida en dB (por defecto 0);
+#X text 144 477 usar o no usar anticlick (distinto de cero y 0 respectivamente)
+(por defecto 0) (consultar objeto adsr~);
+#X obj 623 311 cnv 15 385 63 empty empty empty 20 12 0 14 #fcc4c4 #404040
+0;
+#X text 622 287 DEPENDENCIAS:;
+#X text 630 320 -para que la abstracción funcione debe instalarse
+la abstracción [adsr~] (https://github.com/teaecetyrannis/pd-adsr)
+;
+#X msg 48 160 order \$1;
+#X text 115 160 lados del polígono (se aceptan valores decimales)
+;
+#X msg 48 189 teeth \$1;
+#X text 114 189 tamaño de los "dientes" de cada lado (0-99);
+#X msg 48 223 lerp \$1;
+#X text 108 216 tiempo de interpolación linear al cambiar los valores
+de order y teeth;
+#X msg 48 265 round \$1;
+#X text 115 258 filtro lowpass que se le aplica a la señal del polígono
+antes de convertirla en onda (0-99 \, donde 0 sería completamente
+filtrada y 99 prácticamente sin filtrar);
+#X msg 48 314 pm amount \$1;
+#X text 143 314 índice de la modulación de fase;
+#X msg 48 343 pm freq \$1;
+#X text 128 343 frecuencia de la modulación de fase;
+#X text 674 57 canal izq;
+#X obj 780 47 cnv 15 135 39 empty empty empty 20 12 0 14 #c4fcfc #404040
+0;
+#X obj 790 57 sig~;
+#X text 777 23 OUTLET 1:;
+#X text 830 57 canal der;
+#X connect 2 0 3 0;
+#X connect 3 0 27 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 10 0 11 0;
+#X connect 27 0 4 0;
+#X connect 34 0 36 0;
+#X connect 36 0 38 0;
+#X connect 38 0 40 0;
+#X connect 40 0 42 0;
+#X connect 42 0 44 0;
+#X restore 1277 639 pd help;
+#X text 916 254 sintetizador poligonal como lo describen Christoph
+Hohnerlein y Maximilian Rest \, cuenta con controles para: \; -order
+(de 2.01 a 99 \, determina el orden del polígono regular o la cantidad
+de lados [puede no ser número entero]) \; -teeth (de 0 a 99 \, determina
+el tamaño del ángulo por el cual cada lado es desplazado creando
+"dientes" \, a efectos del sonido agrega armónicos y para valores
+relativamente altos genera distorsión) \; -round (de 0 a 99 \, controla
+un lowpass tiende a suavizar el sonido pero en conjunción con valores
+de teeth que produzcan distorsión surgen comportamientos más interesantes
+ya que el filtro no es aplicado sobre la forma de onda como sintesis
+sustractiva sino sobre la señal polar del polígono inmediatamente
+antes de convertirla en forma de onda) \; -pm amount (determina la
+intensidad de la modulación de fase sobre fi) \; -pm freq (determina
+la frecuencia de la moduladora) \; \; la documentación utilizada para
+el desarrollo del sintetizador es el paper Continuous Order Polygonal
+Waveform Synthesis y se puede encontrar en https://quod.lib.umich.edu/cgi/p/pod/dod-idx/continuous-order-polygonalwaveform-synthesis.pdf?c=icmc
+\; idno=bbp2372.2016.104 \; format=pdf \; \; dylan martin;
+#X obj 408 325 clone ./polywave-voice~ 16;
+#X connect 1 0 45 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 1;
+#X connect 3 1 1 0;
+#X connect 25 0 45 1;
+#X connect 31 0 45 1;
+#X connect 32 0 33 0;
+#X connect 33 0 39 0;
+#X connect 35 0 36 0;
+#X connect 37 0 38 0;
+#X connect 39 0 40 0;
+#X connect 41 0 45 1;
+#X connect 41 1 42 0;
+#X connect 45 0 0 0;
+#X connect 45 1 30 0;
+#X coords 0 -1 1 1 217 206 2 100 150;
