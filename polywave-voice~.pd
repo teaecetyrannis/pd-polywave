@@ -25,7 +25,7 @@
 #X obj 12 359 +;
 #X obj 12 388 mtof;
 #X obj 12 417 s \$0-note;
-#X obj 750 438 r \$0-vel;
+#X obj 722 438 r \$0-vel;
 #X obj 527 226 r \$0-note;
 #X obj 376 399 expr~ sin($v1) * ($v2);
 #X obj 208 399 expr~ cos($v1) * ($v2);
@@ -46,7 +46,7 @@
 #X obj 208 515 lop~ 22000;
 #X obj 760 149 route n t lerp pm lop, f 37;
 #X obj 527 370 lop~;
-#X obj 750 525 switch~;
+#X obj 722 525 switch~;
 #X obj 860 67 t f f;
 #X obj 12 233 spigot;
 #N canvas -8 -8 1366 685 switch 0;
@@ -90,7 +90,7 @@ midi;
 #X connect 15 0 13 0;
 #X connect 16 0 14 0;
 #X connect 16 0 15 0;
-#X restore 750 496 pd switch;
+#X restore 722 496 pd switch;
 #X obj 208 457 clip~ -0.99 0.99;
 #X obj 376 457 clip~ -0.99 0.99;
 #X text 927 323 el objeto expr~ se corresponde con la fórmula descripta
@@ -99,7 +99,7 @@ en el paper \, donde: \; -$v1 = fi \; -$f2 = pi \; -$f3 = 2*pi \; -$v4
 #X obj 860 96 sel 0;
 #X msg 860 120 0;
 #X obj 760 38 route poly adsr switch;
-#X obj 750 467 dym/adsr~;
+#X obj 722 467 pd-adsr/adsr~;
 #X connect 0 0 3 0;
 #X connect 1 0 0 0;
 #X connect 2 0 28 0;

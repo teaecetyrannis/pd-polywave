@@ -3,7 +3,7 @@ Sintetizador poligonal basado en el método propuesto por Christoph Hohnerlein y
 
 
 ## instalación
-Descargar el archivo polywave.zip de la [última release](https://github.com/teaecetyrannis/pd-polywave/releases/) y agregar la carpeta contenedora al path de pure data. Ya se puede iniciar desde cualquier parche creando el objeto `[polywave~]`.  
+Descargar el zip y extraer la carpeta (o clonar el repositorio) dentro de una ruta de búsqueda de pure data. Ya se puede iniciar desde cualquier parche creando el objeto `[pd-polywave/polywave~]`.  
   
 Depende del objeto [`[adsr~]`](https://github.com/teaecetyrannis/pd-adsr), por lo que éste deberá instalarse también.
 
